@@ -1,5 +1,0 @@
-{
-  "port": 3003,
-  "jwtSecret": "asdf",
-  "mongoUri": "mongodb+srv://vasylyk:393206842872@cluster0.w9vj1.mongodb.net/app?retryWrites=true&w=majority"
-}

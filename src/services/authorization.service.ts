@@ -1,14 +1,13 @@
 import bcrypt from 'bcrypt';
-import { Request, Response } from 'express';
 
 import { User } from '@models';
 
-const register = async (body: { email: any; password: any }) => {
+const register = async (body: { email: string; password: string }) => {
   try {
     const { email, password } = body;
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    const user = new User({ email: email, password: hashedPassword });
+    const user = new User({ email, password: hashedPassword });
 
     await user.save();
 

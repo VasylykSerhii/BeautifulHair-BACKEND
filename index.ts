@@ -1,4 +1,4 @@
-import { Handlers } from '@sentry/node';
+import { Handlers, init as sentryInit } from '@sentry/node';
 import { json, raw, text, urlencoded } from 'body-parser';
 import express, { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';

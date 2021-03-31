@@ -8,11 +8,17 @@ const validate = (validationSchema: Joi.ObjectSchema, params: object) => {
     throw new Error(validationMessages.invalidDataType);
   }
 
-  console.log(validationSchema.validate(params));
-
-  const { error } = validationSchema.validate(params);
+  const { error } = validationSchema.validate(params, { abortEarly: false });
   if (error) {
-    throw new ClientError(validationMessages.invalidInput, 400, error);
+    const errorsArray = error.details.reduce(
+      (acc, el) => ({
+        ...acc,
+        [el.path.join('.')]: el.message,
+      }),
+      {},
+    );
+
+    throw new ClientError(validationMessages.invalidInput, 400, errorsArray);
   }
 };
 

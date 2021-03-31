@@ -3,7 +3,6 @@ import { json, raw, text, urlencoded } from 'body-parser';
 import express, { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 
-import { sentryConfigs } from '@configs';
 import { sentryMiddleware } from '@middlewares';
 import { ClientError } from '@models';
 import { errorResponseHandler } from '@responses';

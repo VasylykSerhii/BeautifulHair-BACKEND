@@ -3,6 +3,6 @@ import { Router } from 'express';
 import { emailController } from '@controllers';
 const authRouter = Router();
 
-authRouter.post('/sendEmail', emailController.sendEmail);
+authRouter.post('/send', emailController.sendEmail);
 
 export default authRouter;

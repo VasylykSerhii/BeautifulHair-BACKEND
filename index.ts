@@ -8,6 +8,7 @@ import { ClientError } from '@models';
 import { errorResponseHandler } from '@responses';
 import routes from '@routes';
 import { env } from '@utils';
+import cors from 'cors';
 
 const app = express();
 
@@ -15,13 +16,14 @@ app.use(Handlers.requestHandler());
 app.use(Handlers.tracingHandler());
 
 app.use(json());
+app.use(cors());
 app.use(raw());
 app.use(text());
 app.use(urlencoded({ extended: true }));
 
 app.use('/api', routes);
 
-const port = env.port || 3030;
+const port = env.port || 3003;
 
 mongoose.connect(
   env.connectionString,

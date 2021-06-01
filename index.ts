@@ -1,5 +1,6 @@
-import { Handlers, init as sentryInit } from '@sentry/node';
+import { Handlers } from '@sentry/node';
 import { json, raw, text, urlencoded } from 'body-parser';
+import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 
@@ -8,7 +9,6 @@ import { ClientError } from '@models';
 import { errorResponseHandler } from '@responses';
 import routes from '@routes';
 import { env } from '@utils';
-import cors from 'cors';
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use('/api', routes);
 
-const port = env.port || 3003;
+const port = env.port || 5001;
 
 mongoose.connect(
   env.connectionString,

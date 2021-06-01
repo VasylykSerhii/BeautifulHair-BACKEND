@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node -r dotenv/config -r module-alias/register build/index.js",
     "dev": "nodemon",
-    "build": "tsc -p ."
+    "build": "rimraf ./build && tsc -p tsconfig.json"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -19,6 +19,7 @@
     "express-validator": "^6.10.0",
     "joi": "^17.4.0",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongoose": "^5.12.2",
     "nodemailer": "^6.6.1",
     "tsconfig-paths": "^3.9.0",
@@ -41,5 +42,20 @@
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",
     "tslint": "^6.1.3"
+  },
+  "_moduleAliases": {
+    "@configs": "build/src/configs",
+    "@constants": "build/src/constants",
+    "@controllers": "build/src/controllers",
+    "@interfaces": "build/src/interfaces",
+    "@models": "build/src/models",
+    "@repositories": "build/src/repositories",
+    "@middlewares": "build/src/middlewares",
+    "@responses": "build/src/responses",
+    "@routes": "build/src/routes",
+    "@services": "build/src/services",
+    "@types": "build/src/types",
+    "@utils": "build/src/utils",
+    "@validation": "build/src/validation"
   }
 }

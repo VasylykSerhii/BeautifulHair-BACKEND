@@ -8,5 +8,8 @@ RUN yarn
 
 COPY . .
 
+RUN yarn build
+
 EXPOSE 5001
-CMD [ "node", "index.js" ]
+
+CMD [ "node", "-r", "dotenv/config", "-r", "module-alias/register", "build/index.js" ]

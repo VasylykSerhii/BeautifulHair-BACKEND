@@ -1,18 +1,11 @@
 FROM node:12
 
-# создание директории приложения
 WORKDIR /usr/src/app
 
-# установка зависимостей
-# символ астериск ("*") используется для того чтобы по возможности 
-# скопировать оба файла: package.json и package-lock.json
 COPY package*.json ./
 
-RUN yarn install
-# Если вы создаете сборку для продакшн
-# RUN yarn ci --only=production
+RUN yarn 
 
-# копируем исходный код
 COPY . .
 
 EXPOSE 5001

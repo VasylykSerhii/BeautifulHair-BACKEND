@@ -23,7 +23,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use('/api', routes);
 
-const port = env.port || 5001;
+const port = env.port || 3000;
 
 mongoose.connect(
   env.connectionString,

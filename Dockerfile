@@ -10,6 +10,6 @@ COPY . .
 
 RUN yarn build
 
-EXPOSE 5001
+EXPOSE 5000
 
 CMD [ "node", "-r", "dotenv/config", "-r", "module-alias/register", "build/index.js" ]

@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 
+import { env } from '@utils';
+
 interface IBodyMail {
   email: string;
   text: string;
@@ -12,8 +14,8 @@ const sendEmail = async (body: IBodyMail) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'vasylyk97@gmail.com', // generated ethereal user
-      pass: '393206842872vm', // generated ethereal password
+      user: env.nodemailerEmail, // generated ethereal user
+      pass: env.nodemailerPass, // generated ethereal password
     },
   });
 

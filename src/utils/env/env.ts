@@ -1,4 +1,4 @@
-import { EnvMode, IEnv } from "./env.interface";
+import { EnvMode, IEnv } from './env.interface';
 
 const processEnvMode = process.env.NODE_ENV?.toLowerCase() as EnvMode;
 const envMode = Object.values(EnvMode).includes(processEnvMode)
@@ -16,7 +16,7 @@ export const isProdEnv = () => isEnv(EnvMode.PROD_ENV);
 export const isTestEnv = () => isEnv(EnvMode.TEST_ENV);
 
 const mapEnvValues = {
-  bool: (envValue: string) => envValue === "true",
+  bool: (envValue: string) => envValue === 'true',
   number: (envValue: string, defaultValue: number) => {
     const value = Number(envValue);
 
@@ -26,14 +26,13 @@ const mapEnvValues = {
 
 const mapEnv = (envData: NodeJS.ProcessEnv) => {
   const {
-    CONNECT_STRING = "",
-    USE_CORS = "",
-    PORT = "",
-    JWT_SECRET = "",
-    AUTH_TOKEN_EXPIRATION = "30m",
-    REFRESH_TOKEN_EXPIRATION = "1d",
-    EMAIL = "",
-    EMAIL_PASS = "",
+    CONNECT_STRING = '',
+    USE_CORS = '',
+    PORT = '',
+    JWT_SECRET = '',
+    AUTH_TOKEN_EXPIRATION = '30m',
+    REFRESH_TOKEN_EXPIRATION = '1d',
+    EMAIL_API = '',
   } = envData;
 
   const defaultPort = 5000;
@@ -45,8 +44,7 @@ const mapEnv = (envData: NodeJS.ProcessEnv) => {
     jwtSecret: JWT_SECRET,
     authorizationTokenDuration: AUTH_TOKEN_EXPIRATION,
     refreshTokenDuration: REFRESH_TOKEN_EXPIRATION,
-    nodemailerEmail: EMAIL,
-    nodemailerPass: EMAIL_PASS,
+    emailApi: EMAIL_API,
   };
 
   return Object.freeze(parsed);

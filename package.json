@@ -56,6 +56,7 @@
     "@services": "build/src/services",
     "@types": "build/src/types",
     "@utils": "build/src/utils",
-    "@validation": "build/src/validation"
+    "@validation": "build/src/validation",
+    "@view": "build/src/view"
   }
 }

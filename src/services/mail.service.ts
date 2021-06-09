@@ -1,8 +1,9 @@
 import nodemailer from 'nodemailer';
 
 import { env } from '@utils';
+import { mailHtml } from '@view';
 
-interface IBodyMail {
+export interface IBodyMail {
   email: string;
   text: string;
   name: string;
@@ -11,8 +12,11 @@ interface IBodyMail {
 
 const sendEmail = async (body: IBodyMail) => {
   const { email, text, phone, name } = body;
+
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
       user: env.nodemailerEmail, // generated ethereal user
       pass: env.nodemailerPass, // generated ethereal password
@@ -23,7 +27,7 @@ const sendEmail = async (body: IBodyMail) => {
     from: '"Beauty Hair" vasylyk97@gmail.com', // sender address
     to: email, // list of receivers
     subject: 'Beauty Hair', // Subject line
-    html: `<b>Привіт ${name} я згодом тобі перетелефоную</b><div> Ви звернулися з питанням:${text}</div>`, // html body
+    html: mailHtml({ text, name }), // html body
   });
 
   await transporter.sendMail({

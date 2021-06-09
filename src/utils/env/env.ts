@@ -32,7 +32,8 @@ const mapEnv = (envData: NodeJS.ProcessEnv) => {
     JWT_SECRET = '',
     AUTH_TOKEN_EXPIRATION = '30m',
     REFRESH_TOKEN_EXPIRATION = '1d',
-    EMAIL_API = '',
+    NODEMAILER_EMAIL = '',
+    NODEMAILER_EMAIL_PASSWORD = '',
   } = envData;
 
   const defaultPort = 5000;
@@ -44,7 +45,8 @@ const mapEnv = (envData: NodeJS.ProcessEnv) => {
     jwtSecret: JWT_SECRET,
     authorizationTokenDuration: AUTH_TOKEN_EXPIRATION,
     refreshTokenDuration: REFRESH_TOKEN_EXPIRATION,
-    emailApi: EMAIL_API,
+    nodemailerEmail: NODEMAILER_EMAIL,
+    nodemailerPass: NODEMAILER_EMAIL_PASSWORD,
   };
 
   return Object.freeze(parsed);

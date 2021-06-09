@@ -94,7 +94,7 @@
         "grouped-imports": true,
         "groups": [
           {
-            "match": "^@(configs|constants|controllers|interfaces|middlewares|models|repositories|responses|routes|services|types|utils|validation)",
+            "match": "^@(configs|constants|controllers|interfaces|middlewares|models|repositories|responses|routes|services|types|utils|validation|view)",
             "order": 20
           },
           { "name": "parent_dir", "match": "^[.][.]", "order": 30 },

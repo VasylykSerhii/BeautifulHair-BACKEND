@@ -11,5 +11,6 @@ export interface IEnv {
   jwtSecret: string;
   authorizationTokenDuration: string;
   refreshTokenDuration: string;
-  emailApi: string;
+  nodemailerEmail: string;
+  nodemailerPass: string;
 }

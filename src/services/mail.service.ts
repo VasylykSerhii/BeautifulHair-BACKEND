@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
 
+import { ClientError } from '@models';
 import { env } from '@utils';
 import { mailHtml } from '@view';
-import { ClientError } from '@models';
 
 export interface IBodyMail {
   email: string;
@@ -38,11 +38,11 @@ const sendEmail = async (body: IBodyMail) => {
       subject: 'Beauty Hair', // Subject line
       html: `<b>Привіт, мене звати ${name} у мене до вас декілька питать, ось мій номер телефону: ${phone}.</b> `, // html body
     });
+
+    return { message: 'saccess' };
   } catch (error) {
     throw new ClientError(error.message);
   }
-
-  return { message: 'saccess' };
 };
 
 export default { sendEmail };

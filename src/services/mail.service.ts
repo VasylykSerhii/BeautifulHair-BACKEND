@@ -11,20 +11,20 @@ export interface IBodyMail {
   phone: string;
 }
 
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: env.nodemailerEmail, // generated ethereal user
+    pass: env.nodemailerPass, // generated ethereal password
+  },
+});
+
 const sendEmail = async (body: IBodyMail) => {
   const { email, text, phone, name } = body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: env.nodemailerEmail, // generated ethereal user
-        pass: env.nodemailerPass, // generated ethereal password
-      },
-    });
-
     await transporter.sendMail({
       from: '"Beauty Hair" vasylyk97@gmail.com', // sender address
       to: email, // list of receivers

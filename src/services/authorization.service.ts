@@ -1,19 +1,12 @@
-import bcrypt from 'bcrypt';
+import { getAuth } from 'firebase-admin/auth';
 
-import { validationMessages } from '@constants';
-import { ClientError, User } from '@models';
+import { User } from '@models';
 import { createJwtToken, env } from '@utils';
 
-const setAuth = async (userId: string, userRole: string) => {
-  const authToken = createJwtToken(
-    { id: userId, role: userRole },
-    env.authorizationTokenDuration,
-  );
-
-  const refreshToken = createJwtToken(
-    { id: userId, role: userRole },
-    env.refreshTokenDuration,
-  );
+// need change user type
+const setAuth = (user: any) => {
+  const authToken = createJwtToken(user, env.authorizationTokenDuration);
+  const refreshToken = createJwtToken(user, env.refreshTokenDuration);
 
   return {
     access_token: authToken,
@@ -21,27 +14,35 @@ const setAuth = async (userId: string, userRole: string) => {
   };
 };
 
-const register = async (body: { email: string; password: string }) => {
-  const { email, password } = body;
+const auth = async ({ idToken }: { idToken: string }) => {
+  const decodedToken = await getAuth().verifyIdToken(idToken);
 
-  const hashedPassword = await bcrypt.hash(password, 12);
-  const user = new User({ email, password: hashedPassword, role: 'User' });
+  const data = {
+    name: decodedToken.name,
+    email: decodedToken.email,
+    fb_id: decodedToken.uid,
+    role: 'User',
+  };
 
-  await User.create(user);
+  const user = await User.findOne({
+    email: data.email,
+    fb_id: data.fb_id,
+  });
 
-  return setAuth(user.id, user.role);
-};
-
-const login = async (body: { email: string; password: string }) => {
-  const { email, password } = body;
-
-  const user = await User.findOne({ email });
-
-  if (!user || !bcrypt.compareSync(password, user.password)) {
-    throw new ClientError(validationMessages.invalidLogin);
+  if (user) {
+    return { user, token: setAuth(user) };
   }
 
-  return setAuth(user.id, user.role);
+  if (!user) {
+    const newUser = new User(data);
+    await User.create(newUser);
+    const findNewUser = await User.findOne({
+      email: data.email,
+      fb_id: data.fb_id,
+    });
+
+    return { user: findNewUser, token: setAuth(findNewUser) };
+  }
 };
 
-export default { register, login };
+export default { auth };

@@ -1,1 +1,1 @@
-export { default as ClientError } from "./client-error.model";
+export { default as ClientError } from './client-error.model';

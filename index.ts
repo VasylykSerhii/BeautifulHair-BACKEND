@@ -2,6 +2,8 @@ import { Handlers } from '@sentry/node';
 import { json, raw, text, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
+import { credential } from 'firebase-admin';
+import { initializeApp } from 'firebase-admin/app';
 import mongoose from 'mongoose';
 
 import { sentryMiddleware } from '@middlewares';
@@ -21,9 +23,13 @@ app.use(raw());
 app.use(text());
 app.use(urlencoded({ extended: true }));
 
-app.use('/api', routes);
+app.use('/v1', routes);
 
-const port = env.port || 3000;
+const port = env.port || 3001;
+
+initializeApp({
+  credential: credential.cert('./firebase.json'),
+});
 
 mongoose.connect(
   env.connectionString,

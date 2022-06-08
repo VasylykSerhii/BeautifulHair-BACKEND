@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "beautiful-hair-973ba",
+  "private_key_id": "6006accaaadce037c059cc6aebe9642aba160ace",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCxcqwvD98hD/xw\nkMpzRjwo3tWb3Q20sUWZY3Sr32/TrFamztux2qdY6bk041NVA7vuPuTxgOr/Nc52\nB64XsXdnLMKzUYroly9rsNBHCX1lLN+0nuyfXZEgR34B1aEsxO86a8IdVYnYfCnS\n2lGZNGajC1ZqQUsO2Ne1dsVLmiVowBReKDFcsPshJ1Q6dazC37zXpx2nDwP5BN8q\nH+l4cYiyHCDkVFYhP8PdUg/QdokNDDF5VHqJr6gFsSxH7bDdrOM5S2cQQFdi5C5O\ncYsPWZL9wuTs49BYERqA7UBTkowbu/hUWxyHOWGkmGd9H8M+yXTOoDBxVoY48uHk\nnIERCA3XAgMBAAECggEAHS8Rb3oKRftFltPRYA0UltozQnukJewj2LrZNO0+DI+i\n/rM1wbYG4OIrsi2TBn/jOCdC6w87Vvbn+lSABuiKjT741JocIO3AgFMnpg9C/tFX\nB3M90mYGmMr5R971L5JCEBcp6T4ouiCNll6OngZWvQj/0ODlMc9rBq6+exUiguwS\nKDXsZ83nMVxk7X3YL+y9UehIm4Z+I7jq/D0a+RLFBjH8B/LXvfOI03c2D1HrXFdR\nXpRkLaSGkzyGSjy+Ttx94jXzZA+DFSIQVsc1z3jvJN1jTXndKBPmxt0f9ZHEwBLu\nPXCWtkmzi33KkPjDnc0/ZQHpUMfFQO8Jm2PcMnhkUQKBgQDcSewa9FO7Q+RwRNpC\n4FcGpHTwKUNYcRUobx4vxrTaH8oVdiptPBYI9L5Nruo9x8IlszJn3EF7snS3tAfj\njlKPrI3oaUw396DiOy4f3t5nWFQ5We+/jPAVFqTxvccCXNJdvlcMn5+dzInFU7ln\nYdcs++arcyt6jOK05aXskQOZsQKBgQDONtaGiuQPZOauqjcJpsEpeM7EgTOToeUU\njhdqt8/Aa9f7ozPhcTdMFh5qfToxx5hDzhJU8SCxN7HL52S55yZvv88LV0JtJAGm\nbYEJ3YlxK42pSQlOxecDSHy0sqizHKEt/NmOXqeOcnpj6n/XcBlPhjcqmpoaubOC\npMsaEVj6BwKBgB/rNiLRtDA2Lit2TonSJ8n2mlsSH4f5Gq+5Kg6SJDJW2NkzPgKF\n6ktx6wEmjxpUj3UW+f7Ck1pxCSh1FY+LV7sprYY3e6vAXbdqC8ziZidjTRDiTzLa\nIQ9tMIk2jldxS6n5onNZza73rB7DeuHX8225Mjs1fN9M+qxrehdFC9iBAoGBALMp\n2gFTMwpc9D/VC7SK+VB68cqxJoqiIlJVkeragNoB2Ml85lp87zpgDVUgMCuH6rce\nl7bNOUY/yW4LQOxz9GUrFUwZKFGC8xwSEAbuP7ffy1jFaBzUvP2RQSgOAZx8x10Z\nTjvv6UxOEiA1YZVgg90gE1YktLd7mIdtfjjL0a6JAoGAOF99MCsKNgNxLR7lnoto\nrIocWjG47HJ5ooFzmcKryl8v8m3VQhUA/rMuenlXzkM8TaBmL1WjzMDNSUz7jicx\nYm01cGsro7YSQXK99XG3ZZ0Cmlaz8KfbnTia16KTI3aL1hECVR1E3lA5B8A94gAF\nReJOQVkR15GRrOCGUFWCzWk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-cgekq@beautiful-hair-973ba.iam.gserviceaccount.com",
+  "client_id": "115140790195109136691",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-cgekq%40beautiful-hair-973ba.iam.gserviceaccount.com"
+}

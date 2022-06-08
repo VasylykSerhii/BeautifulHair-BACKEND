@@ -1,1 +1,1 @@
-export { default as validationMessages } from "./validation-messages";
+export { default as validationMessages } from './validation-messages';

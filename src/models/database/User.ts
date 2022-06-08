@@ -1,8 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 export const userSchema = new Schema({
   email: { type: String, require: true, unique: true },
-  password: { type: String, require: true },
+  name: { type: String, require: true },
+  fb_id: { type: String, require: true },
   role: { type: String, require: true },
 });
 

@@ -2,18 +2,12 @@ import { Request, Response } from 'express';
 
 import { authorizationService } from '@services';
 import { validate } from '@utils';
-import { createUserSchema, loginUserSchema } from '@validation';
+import { authSchema } from '@validation';
 
-const register = async (req: Request, res: Response) => {
-  validate(createUserSchema, req.body);
-  const token = await authorizationService.register(req.body);
+const auth = async (req: Request, res: Response) => {
+  validate(authSchema, req.body);
+  const token = await authorizationService.auth(req.body);
   res.json(token);
 };
 
-const login = async (req: Request, res: Response) => {
-  validate(loginUserSchema, req.body);
-  const token = await authorizationService.login(req.body);
-  res.json(token);
-};
-
-export default { register, login };
+export default { auth };

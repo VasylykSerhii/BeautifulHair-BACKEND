@@ -3,7 +3,6 @@ import { getAuth } from 'firebase-admin/auth';
 import { User } from '@models';
 import { createJwtToken, env } from '@utils';
 
-// need change user type
 const setAuth = (userId: string, userRole: string) => {
   const authToken = createJwtToken(
     { id: userId, role: userRole },
@@ -29,14 +28,7 @@ const auth = async ({ idToken }: { idToken: string }) => {
   }).exec();
 
   if (findUser) {
-    const {
-      _id,
-      fb_id: fbIf,
-      ...user
-    } = {
-      ...findUser.toObject(),
-      id: findUser._id,
-    };
+    const user = findUser.toObject();
 
     return { user, token: setAuth(user.id, user.role) };
   }
@@ -55,14 +47,7 @@ const auth = async ({ idToken }: { idToken: string }) => {
     }).exec();
 
     if (findNewUser) {
-      const {
-        _id,
-        fb_id: fbIf,
-        ...user
-      } = {
-        ...findNewUser.toObject(),
-        id: findNewUser._id,
-      };
+      const user = findNewUser.toObject();
 
       return { user, token: setAuth(user.id, user.role) };
     }

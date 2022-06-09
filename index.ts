@@ -31,17 +31,9 @@ initializeApp({
   credential: credential.cert('./firebase.json'),
 });
 
-mongoose.connect(
-  env.connectionString,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  },
-  () => {
-    console.log('> Connected to db');
-  },
-);
+mongoose.connect(env.connectionString, () => {
+  console.log('> Connected to db');
+});
 
 app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (error instanceof ClientError) {

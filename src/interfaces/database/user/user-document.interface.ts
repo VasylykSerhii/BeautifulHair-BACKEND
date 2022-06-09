@@ -1,5 +1,7 @@
 import { Document } from 'mongoose';
 
-import IUser from './user.interface';
+import { IUser } from '@interfaces';
 
-export interface IUserDocument extends IUser, Document {}
+export interface IUserDocument extends IUser, Document {
+  id: string;
+}

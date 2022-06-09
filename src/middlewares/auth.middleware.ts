@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 
+import { ITokenData } from '@interfaces';
 import { ClientError } from '@models';
 import { verifyJwtToken } from '@utils';
 
@@ -20,7 +21,7 @@ export const checkToken = (
     const token = authHeader.startsWith('Bearer ')
       ? authHeader.substring(7, authHeader.length)
       : authHeader;
-    req.user = verifyJwtToken(token);
+    req.user = verifyJwtToken(token) as ITokenData;
     next();
   } catch (error) {
     next(new ClientError('Unathorized', 401));

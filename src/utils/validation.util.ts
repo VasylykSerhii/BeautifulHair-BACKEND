@@ -8,7 +8,10 @@ const validate = (validationSchema: Joi.ObjectSchema, params: object) => {
     throw new Error(validationMessages.invalidDataType);
   }
 
-  const { error } = validationSchema.validate(params, { abortEarly: false });
+  const { error } = validationSchema.validate(params, {
+    abortEarly: false,
+  });
+
   if (error) {
     const errorsArray = error.details.reduce(
       (acc, el) => ({

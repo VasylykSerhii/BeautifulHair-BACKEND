@@ -4,9 +4,15 @@ import { User } from '@models';
 import { createJwtToken, env } from '@utils';
 
 // need change user type
-const setAuth = (user: any) => {
-  const authToken = createJwtToken(user, env.authorizationTokenDuration);
-  const refreshToken = createJwtToken(user, env.refreshTokenDuration);
+const setAuth = (userId: string, userRole: string) => {
+  const authToken = createJwtToken(
+    { id: userId, role: userRole },
+    env.authorizationTokenDuration,
+  );
+  const refreshToken = createJwtToken(
+    { id: userId, role: userRole },
+    env.refreshTokenDuration,
+  );
 
   return {
     access_token: authToken,
@@ -15,33 +21,51 @@ const setAuth = (user: any) => {
 };
 
 const auth = async ({ idToken }: { idToken: string }) => {
-  const decodedToken = await getAuth().verifyIdToken(idToken);
+  const { name, email, uid: fb_id } = await getAuth().verifyIdToken(idToken);
 
-  const data = {
-    name: decodedToken.name,
-    email: decodedToken.email,
-    fb_id: decodedToken.uid,
-    role: 'User',
-  };
+  const findUser = await User.findOne({
+    email,
+    fb_id,
+  }).exec();
 
-  const user = await User.findOne({
-    email: data.email,
-    fb_id: data.fb_id,
-  });
+  if (findUser) {
+    const {
+      _id,
+      fb_id: fbIf,
+      ...user
+    } = {
+      ...findUser.toObject(),
+      id: findUser._id,
+    };
 
-  if (user) {
-    return { user, token: setAuth(user) };
+    return { user, token: setAuth(user.id, user.role) };
   }
 
-  if (!user) {
-    const newUser = new User(data);
+  if (!findUser) {
+    const newUser = new User({
+      name,
+      email,
+      fb_id,
+      role: 'User',
+    });
     await User.create(newUser);
     const findNewUser = await User.findOne({
-      email: data.email,
-      fb_id: data.fb_id,
-    });
+      email,
+      fb_id,
+    }).exec();
 
-    return { user: findNewUser, token: setAuth(findNewUser) };
+    if (findNewUser) {
+      const {
+        _id,
+        fb_id: fbIf,
+        ...user
+      } = {
+        ...findNewUser.toObject(),
+        id: findNewUser._id,
+      };
+
+      return { user, token: setAuth(user.id, user.role) };
+    }
   }
 };
 

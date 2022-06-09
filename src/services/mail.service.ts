@@ -40,8 +40,8 @@ const sendEmail = async (body: IBodyMail) => {
     });
 
     return { message: 'saccess' };
-  } catch (error) {
-    throw new ClientError(error.message);
+  } catch (error: any) {
+    throw new ClientError(error?.message);
   }
 };
 

@@ -10,7 +10,7 @@ const sendEmail = async (req: Request, res: Response) => {
     validate(sendEmailSchema, req.body);
     res.status(200).json({});
     await mailService.sendEmail(req.body);
-  } catch (error) {
+  } catch (error: any) {
     throw new ClientError(error.message);
   }
 };

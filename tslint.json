@@ -244,7 +244,8 @@
       "check-format",
       "allow-leading-underscore",
       "require-const-for-all-caps",
-      "ban-keywords"
+      "ban-keywords",
+      "allow-snake-case"
     ],
     "comment-type": [true, "singleline", "doc"],
     "comment-format": [true, "check-space"],

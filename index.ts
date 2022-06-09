@@ -1,4 +1,4 @@
-import { Handlers } from '@sentry/node';
+import { Handlers, init as sentryInit } from '@sentry/node';
 import { json, raw, text, urlencoded } from 'body-parser';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
@@ -6,6 +6,7 @@ import { credential } from 'firebase-admin';
 import { initializeApp } from 'firebase-admin/app';
 import mongoose from 'mongoose';
 
+import { sentryConfigs } from '@configs';
 import { sentryMiddleware } from '@middlewares';
 import { ClientError } from '@models';
 import { errorResponseHandler } from '@responses';
@@ -14,8 +15,14 @@ import { env } from '@utils';
 
 const app = express();
 
+sentryInit({
+  dsn: sentryConfigs.dsn,
+  integrations: sentryConfigs.integrations,
+  tracesSampleRate: sentryConfigs.tracesSampleRate,
+});
+
 app.use(Handlers.requestHandler());
-app.use(Handlers.tracingHandler());
+// app.use(Handlers.tracingHandler());
 
 app.use(json());
 app.use(cors());

@@ -9,6 +9,7 @@ const auth = async (req: Request, res: Response) => {
   const token = await authorizationService.auth(req.body);
   res.json(token);
 };
+
 const token = (_req: Request, res: Response) => {
   res.json({ status: 'success' });
 };
